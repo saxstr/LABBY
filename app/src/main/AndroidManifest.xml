@@ -13,7 +13,26 @@
         android:theme="@style/Theme.Gp_test"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".SavedResultSc"
+            android:exported="false" />
+        <activity
+            android:name=".MedTablesSc"
+            android:exported="false" />
+        <activity
+            android:name=".CodeCheckSc"
+            android:exported="false" />
+        <activity
+            android:name=".AnalysisSc"
+            android:exported="false" />
+        <activity
+            android:name=".CamSc"
+            android:exported="false" />
+        <activity
+            android:name=".LogInSc"
+            android:exported="false" />
+
+        <activity
+            android:name=".SplashSc"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
