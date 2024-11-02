@@ -13,6 +13,18 @@
         android:theme="@style/Theme.Gp_test"
         tools:targetApi="31">
         <activity
+            android:name=".TutorialPageSc"
+            android:exported="false" />
+        <activity
+            android:name=".pillsSc"
+            android:exported="false" />
+        <activity
+            android:name=".TestResultSc"
+            android:exported="false" />
+        <activity
+            android:name=".RegSc"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
