@@ -10,6 +10,20 @@
     android:gravity="center"
     android:background="#F8F1E7"
     tools:context=".RegSc">
+
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:contentDescription="App Logo"
+        android:src="@drawable/applogo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.072" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -25,6 +39,7 @@
         app:layout_constraintVertical_bias="0.268" />
 
     <EditText
+        android:id="@+id/signupName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_corners"
@@ -47,7 +62,7 @@
     <!-- Create Account Button -->
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/signupEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_corners"
@@ -61,7 +76,7 @@
         app:layout_constraintVertical_bias="0.442" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/signupPass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_corners"
@@ -77,7 +92,8 @@
 
 
     <Button
-        android:layout_width="330dp"
+        android:id="@+id/googlesignupButton"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/lightBlue"
 
@@ -85,13 +101,13 @@
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.758" />
+        app:layout_constraintVertical_bias="0.789" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/signupButton"
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:backgroundTint="@color/navy"

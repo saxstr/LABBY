@@ -6,6 +6,7 @@
     android:gravity="center"
     android:padding="16dp"
     android:id="@+id/main"
+    android:background="#F8F1E7"
     tools:context=".LogInSc">
 
     <!-- Logo ImageView -->
@@ -19,7 +20,7 @@ android:src="@drawable/applogo"
 
     <!-- Email EditText -->
 <EditText
-android:id="@+id/emailEditText"
+android:id="@+id/loginEmail"
 android:layout_width="match_parent"
 android:layout_height="50dp"
 android:hint="Email"
@@ -28,7 +29,7 @@ android:layout_marginBottom="20dp" />
 
     <!-- Password EditText -->
 <EditText
-android:id="@+id/passwordEditText"
+android:id="@+id/loginPass"
 android:layout_width="match_parent"
 android:layout_height="50dp"
 android:hint="Password"
@@ -45,8 +46,8 @@ android:text="Login"
     android:layout_marginBottom="16dp" />
 
     <!-- Register TextView -->
-<TextView
-android:id="@+id/registerTextView"
+<Button
+android:id="@+id/toregButton"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:text="Don't have an account? Register here"

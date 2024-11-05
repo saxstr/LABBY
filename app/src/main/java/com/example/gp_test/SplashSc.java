@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.FirebaseApp;
+
 public class SplashSc extends AppCompatActivity {
 
     @Override
@@ -18,5 +20,8 @@ public class SplashSc extends AppCompatActivity {
             startActivity(intent);
             finish();
         }, 5000); // 5000 milliseconds = 5 seconds
+
+        FirebaseApp.initializeApp(this);
+
     }
 }
