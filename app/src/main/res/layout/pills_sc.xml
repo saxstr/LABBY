@@ -171,8 +171,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="تسجيل دواء جديد"
+
             android:textColor="#FFFFFF"
-            android:background="#007BFF"
+            android:backgroundTint="@color/navy"
             android:layout_marginEnd="8dp"/>
 
         <!-- Add other icons/buttons for navigation here -->

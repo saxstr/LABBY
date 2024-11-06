@@ -132,7 +132,7 @@
             android:layout_height="wrap_content"
             android:text="الاتصال ب 937"
             android:textColor="#FFFFFF"
-            android:background="#007BFF"
+            android:backgroundTint="@color/navy"
         android:layout_marginTop="8dp"/>
     </LinearLayout>
 
