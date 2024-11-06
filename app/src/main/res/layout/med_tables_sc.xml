@@ -112,9 +112,12 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="تسجيل قائمة جديدة"
+
             android:textColor="#FFFFFF"
-            android:background="#007BFF"
+            android:backgroundTint="@color/navy"
         android:layout_marginEnd="8dp"/>
+
+
 
         <Button
             android:layout_width="0dp"
@@ -122,7 +125,11 @@
             android:layout_weight="1"
             android:text="استيراد قائمة"
             android:textColor="#FFFFFF"
-            android:background="#007BFF"/>
+            android:rotation="360"
+
+            android:backgroundTint="@color/navy"
+
+              />
 
     </LinearLayout>
 

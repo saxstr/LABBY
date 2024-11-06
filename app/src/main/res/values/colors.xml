@@ -5,4 +5,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="lightBlue">#6BB9D1</color>
     <color name="navy">#064967</color>
+    <color name="selected_color">#064967</color>
+    <color name="unselected_color">#FF888888</color>
+
+
 </resources>
