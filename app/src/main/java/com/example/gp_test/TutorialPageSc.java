@@ -52,11 +52,7 @@ public class TutorialPageSc extends AppCompatActivity {
                     new String[]{Manifest.permission.CAMERA},
                     CAMERA_PERMISSION_REQUEST_CODE);
         }
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA_PERMISSION);
-        } else {
-            openCamera(); // Call your openCamera method if permission is granted
-        }
+
 
 
 
