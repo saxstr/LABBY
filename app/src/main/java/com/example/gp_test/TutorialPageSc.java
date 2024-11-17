@@ -57,57 +57,53 @@ public class TutorialPageSc extends AppCompatActivity {
         setContentView(R.layout.tutorialpage_sc);
 
 
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
-                != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.CAMERA},
-                    CAMERA_PERMISSION_REQUEST_CODE);
-        }
 
 
 
 
-//      <!--  BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-//
-//// Set default fragment
-//        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new homeFragmment()).commit();
-//
-//// Set up listener for navigation item selection
-//        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-//            Fragment selectedFragment = null;
-//
-//            switch (item.getItemId()) {
-//                case R.id.navGallery:
-//                    selectedFragment = new galleryFragment();
-//                    break;
-//                case R.id.navStats:
-//                    selectedFragment = new statsFragment();
-//                    break;
-//                case R.id.navReminder:
-//                    selectedFragment = new reminderFragment();
-//                    break;
-//                case R.id.navHome:
-//                    selectedFragment = new homeFragmment();
-//                    break;
-//            }
-//
-//            // Replace the current fragment with the selected fragment
-//            if (selectedFragment != null) {
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
-//            }
-//
-//            return true;
-//        });
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"})
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
+// Set default fragment
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new homeFragmment()).commit();
 
-        toResult = findViewById(R.id.tostats);
-        toResult.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(TutorialPageSc.this, TestResultSc.class);
-                startActivity(i);
+// Set up listener for navigation item selection
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            Fragment selectedFragment = null;
+
+            switch (item.getItemId()) { // Corrected method: getItemId()
+                case R.id.navGallery:
+                    selectedFragment = new galleryFragment();
+                    break;
+                case R.id.navStats:
+                    selectedFragment = new statsFragment();
+                    break;
+                case R.id.navReminder:
+                    selectedFragment = new reminderFragment();
+                    break;
+                case R.id.navHome: // Fixed missing "R.id"
+                    selectedFragment = new homeFragmment();
+                    break;
             }
+
+            // Replace the current fragment with the selected fragment
+            if (selectedFragment != null) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+            }
+
+            return true;
         });
+
+
+
+//        toResult = findViewById(R.id.tostats);
+//        toResult.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(TutorialPageSc.this, TestResultSc.class);
+//                startActivity(i);
+//            }
+//        });
         capturedImageView = findViewById(R.id.capturedImageView);
         resultTextView = findViewById(R.id.resultTextView);
 

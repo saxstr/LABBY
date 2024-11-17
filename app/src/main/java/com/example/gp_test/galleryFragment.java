@@ -1,64 +1,122 @@
 package com.example.gp_test;
 
+import static android.widget.Toast.LENGTH_SHORT;
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.content.pm.PackageManager;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link galleryFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+
+import com.google.mlkit.vision.common.InputImage;
+import com.google.mlkit.vision.text.Text;
+import com.google.mlkit.vision.text.TextRecognition;
+import com.google.mlkit.vision.text.TextRecognizer;
+import com.google.mlkit.vision.text.latin.TextRecognizerOptions;
+
+/** @noinspection ALL*/
 public class galleryFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final int REQUEST_IMAGE_CAPTURE = 1;
+    private static final int CAMERA_PERMISSION_REQUEST_CODE = 101;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private ImageView capturedImageView;
+    private TextView resultTextView;
 
-    public galleryFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment galleryFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static galleryFragment newInstance(String param1, String param2) {
-        galleryFragment fragment = new galleryFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
+    @Nullable
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.tutorialpage_sc, container, false);
+
+        // Initialize views
+        capturedImageView = view.findViewById(R.id.capturedImageView);
+        resultTextView = view.findViewById(R.id.resultTextView);
+        Button openCameraButton = view.findViewById(R.id.openCameraButton);
+
+        // Set button click listener
+        openCameraButton.setOnClickListener(v -> openCamera());
+
+        return view;
+    }
+
+    @SuppressLint("QueryPermissionsNeeded")
+    private void openCamera() {
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)
+                == PackageManager.PERMISSION_GRANTED) {
+            try {
+                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+            } catch (Exception e) {
+                Toast.makeText(requireContext(), e.getMessage(), LENGTH_SHORT).show();
+            }
+        } else {
+            // Request camera permission
+            requestPermissions(new String[]{Manifest.permission.CAMERA}, CAMERA_PERMISSION_REQUEST_CODE);
         }
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.tutorialpage_sc, container, false);
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == CAMERA_PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                openCamera();
+            } else {
+                Toast.makeText(requireContext(), "Camera permission is required to use this feature.", LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == AppCompatActivity.RESULT_OK) {
+            Bitmap bitmap = null;
+
+            if (requestCode == REQUEST_IMAGE_CAPTURE && data != null) {
+                Bundle extras = data.getExtras();
+                bitmap = (Bitmap) extras.get("data");
+            }
+
+            if (bitmap != null) {
+                processImage(bitmap);
+            }
+        }
+    }
+
+    private void processImage(Bitmap bitmap) {
+        InputImage image = InputImage.fromBitmap(bitmap, 0);
+        TextRecognizer recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS);
+
+        recognizer.process(image)
+                .addOnSuccessListener(this::passDataToTestResult)
+                .addOnFailureListener(e -> Toast.makeText(requireContext(), "Error: " + e.getMessage(), LENGTH_SHORT).show());
+    }
+
+    private void passDataToTestResult(Text result) {
+        StringBuilder recognizedText = new StringBuilder();
+        for (Text.TextBlock block : result.getTextBlocks()) {
+            recognizedText.append(block.getText()).append("\n");
+        }
+
+        Intent intent = new Intent(requireContext(), TestResultSc.class);
+        intent.putExtra("recognizedText", recognizedText.toString());
+        startActivity(intent);
     }
 }
