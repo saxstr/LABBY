@@ -24,10 +24,7 @@
         <activity
             android:name=".AddMedTables"
             android:exported="false" />
-        <activity
-            android:name=".NewPills"
-            android:exported="false"
-            android:theme="@style/Theme.Gp_test" />
+
         <activity
             android:name=".SavedResultSc"
             android:exported="false" />
