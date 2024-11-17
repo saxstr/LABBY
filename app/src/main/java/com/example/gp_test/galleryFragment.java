@@ -28,7 +28,7 @@ import com.google.mlkit.vision.text.TextRecognition;
 import com.google.mlkit.vision.text.TextRecognizer;
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions;
 
-/** @noinspection ALL*/
+/** @noinspection deprecation*/
 public class galleryFragment extends Fragment {
 
     private static final int REQUEST_IMAGE_CAPTURE = 1;
