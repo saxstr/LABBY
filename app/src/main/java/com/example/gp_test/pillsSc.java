@@ -1,5 +1,6 @@
 package com.example.gp_test;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class pillsSc extends AppCompatActivity {
         private Button tographs;
+        private Button addmedjava;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,10 +28,23 @@ public class pillsSc extends AppCompatActivity {
         });
 
         tographs = findViewById(R.id.savedresult);
+        addmedjava = findViewById(R.id.addmed);
+
+        addmedjava.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent R = new Intent(pillsSc.this, AddMedTables.class);
+
+                        startActivity(R);
+            }
+        });
+
+
+
         tographs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent e = new Intent(pillsSc.this, SavedResultSc.class);
+                Intent e = new Intent(pillsSc.this, AddMedTables.class);
                 startActivity(e);
             }
         });

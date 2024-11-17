@@ -5,13 +5,13 @@
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
+
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -21,12 +21,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gp_test"
         tools:targetApi="31">
-
         <activity
+            android:name=".AddMedTables"
+            android:exported="false" />
 
-            android:name=".NewPills"
-            android:exported="false"
-            android:theme="@style/Theme.Gp_test" />
         <activity
             android:name=".SavedResultSc"
             android:exported="false" />
@@ -67,6 +65,5 @@
             </intent-filter>
         </activity>
     </application>
-
 
 </manifest>

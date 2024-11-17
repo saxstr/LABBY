@@ -1,14 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:padding="16dp"
     android:background="#F8F1E7"
     android:id="@+id/main"
     tools:context=".MedTablesSc">
-
 
     <!-- Title -->
     <TextView
@@ -19,95 +17,53 @@
         android:textColor="#5B3A29"
         android:textStyle="bold"
         android:layout_gravity="center"
-        android:layout_marginBottom="24dp"
-        />
+        android:layout_marginBottom="24dp" />
 
     <!-- Medication Entries -->
     <LinearLayout
+        android:id="@+id/medication_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="vertical">
+        android:orientation="vertical" />
 
-        <!-- First Medication Entry -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:background="@android:color/white"
-            android:layout_marginBottom="12dp"
-            android:gravity="start">
-
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:paddingStart="8dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="أدوية ابوي"
-                    android:textColor="#005EB8"
-                android:textSize="18sp"
-                android:textStyle="bold"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="#123456"
-                    android:textColor="#000000"
-                    android:textSize="14sp"/>
-            </LinearLayout>
-        </LinearLayout>
-
-        <!-- Second Medication Entry -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:background="@android:color/white"
-            android:layout_marginBottom="12dp"
-            android:gravity="start">
-
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:paddingStart="8dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="أدوية اخوي سعيد"
-                    android:textColor="#005EB8"
-                android:textSize="18sp"
-                android:textStyle="bold"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="#352421"
-                    android:textColor="#000000"
-                    android:textSize="14sp"/>
-
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </LinearLayout>
+    <!-- PILLS Button -->
     <Button
         android:id="@+id/topills"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="pills"
+        android:text="PILLS"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp" />
 
-        />
+    <!-- Add Medication Form -->
+    <LinearLayout
+        android:id="@+id/add_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:paddingTop="16dp">
+
+        <EditText
+            android:id="@+id/new_medication_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="اسم القائمة"
+            android:padding="8dp"
+            android:background="@android:color/white"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/add_confirm_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="إضافة"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+
     <!-- Bottom Navigation Bar -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -117,29 +73,21 @@
         android:layout_gravity="bottom">
 
         <Button
+            android:id="@+id/add_table_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="تسجيل قائمة جديدة"
-
             android:textColor="#FFFFFF"
-            android:backgroundTint="@color/navy"
-        android:layout_marginEnd="8dp"/>
-
-
+            android:backgroundTint="@color/navy" />
 
         <Button
+            android:id="@+id/rename_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="استيراد قائمة"
+            android:text="تسمية"
             android:textColor="#FFFFFF"
-            android:rotation="360"
-
-            android:backgroundTint="@color/navy"
-
-              />
-
+            android:backgroundTint="@color/navy" />
     </LinearLayout>
-
 </LinearLayout>
