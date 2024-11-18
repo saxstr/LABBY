@@ -1,117 +1,85 @@
-//testresult
-
 package com.example.gp_test;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 public class TestResultSc extends AppCompatActivity {
     private Button toTables;
-    private Button renameButton;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.testresult_sc); // Ensure this matches your XML layout name
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.testresult_sc);
 
-        // Initialize buttons
-        renameButton = findViewById(R.id.rename1);
-        toTables = findViewById(R.id.tables);
+        // Get the OCR results from the Intent
+        String recognizedText = getIntent().getStringExtra("recognizedText");
 
-        // Set up rename button functionality
-        renameButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toggleEditingMode();
-            }
-        });
+        // Find the parent container for dynamic blocks
+        LinearLayout dynamicContainer = findViewById(R.id.dynamicContainer);
 
-        // Set up navigation to the tables page
-        toTables.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(TestResultSc.this, MedTablesSc.class);
-                startActivity(intent);
-            }
-        });
-
-        // Load saved test names
-        loadTestNames();
-    }
-
-    // Toggle between view and edit modes for test names
-    private void toggleEditingMode() {
-        LinearLayout resultsContainer = findViewById(R.id.results_container);
-        if (resultsContainer == null) {
-            // Prevent crashes if the container is not found
+        // Check if recognizedText is null or empty
+        if (recognizedText == null || recognizedText.isEmpty()) {
+            TextView noResultsView = new TextView(this);
+            noResultsView.setText("No text recognized.");
+            noResultsView.setPadding(16, 16, 16, 16);
+            noResultsView.setTextSize(18);
+            noResultsView.setTextColor(getResources().getColor(android.R.color.holo_red_dark));
+            dynamicContainer.addView(noResultsView);
             return;
         }
 
-        for (int i = 0; i < resultsContainer.getChildCount(); i++) {
-            View child = resultsContainer.getChildAt(i);
+        // Split the recognized text into lines
+        String[] lines = recognizedText.split("\n");
 
-            if (child instanceof LinearLayout) {
-                TextView testNameText = child.findViewById(R.id.test_name_text);
-                EditText testNameEdit = child.findViewById(R.id.test_name_edit);
+        // Dynamically create a block for each line
+        for (String line : lines) {
+            // Create a new LinearLayout for the block
+            LinearLayout blockLayout = new LinearLayout(this);
+            blockLayout.setOrientation(LinearLayout.HORIZONTAL);
 
-                if (testNameText != null && testNameEdit != null) {
-                    if (testNameText.getVisibility() == View.VISIBLE) {
-                        // Switch to editing mode
-                        testNameText.setVisibility(View.GONE);
-                        testNameEdit.setVisibility(View.VISIBLE);
-                        testNameEdit.requestFocus();
-                    } else {
-                        // Save changes and switch back to view mode
-                        String newName = testNameEdit.getText().toString().trim();
-                        testNameText.setText(newName);
-                        testNameEdit.setVisibility(View.GONE);
-                        testNameText.setVisibility(View.VISIBLE);
+            // Set layout parameters for spacing
+            LinearLayout.LayoutParams blockParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+            );
+            blockParams.setMargins(8, 8, 8, 8); // Add spacing between blocks
+            blockLayout.setLayoutParams(blockParams);
 
-                        // Save the new name locally
-                        saveTestNameLocally(i, newName);
-                    }
-                }
-            }
-        }
-    }
+            // Create a TextView for the line
+            TextView textView = new TextView(this);
+            textView.setText(line);
+            textView.setPadding(16, 16, 16, 16);
+            textView.setTextSize(16);
+            textView.setBackgroundColor(getResources().getColor(android.R.color.white));
+            textView.setTextColor(getResources().getColor(android.R.color.black));
 
-    // Save test name locally using SharedPreferences
-    private void saveTestNameLocally(int index, String newName) {
-        SharedPreferences preferences = getSharedPreferences("TestResults", MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("test_name_" + index, newName);
-        editor.apply();
-    }
+            // Add the TextView to the block layout
+            blockLayout.addView(textView);
 
-    // Load test names from SharedPreferences
-    private void loadTestNames() {
-        LinearLayout resultsContainer = findViewById(R.id.results_container);
-        if (resultsContainer == null) {
-            return; // Prevent crashes if the container is not found
+            // Add the block layout to the parent container
+            dynamicContainer.addView(blockLayout);
         }
 
-        SharedPreferences preferences = getSharedPreferences("TestResults", MODE_PRIVATE);
-
-        for (int i = 0; i < resultsContainer.getChildCount(); i++) {
-            View child = resultsContainer.getChildAt(i);
-
-            if (child instanceof LinearLayout) {
-                TextView testNameText = child.findViewById(R.id.test_name_text);
-                if (testNameText != null) {
-                    String savedName = preferences.getString("test_name_" + i, null);
-                    if (savedName != null) {
-                        testNameText.setText(savedName);
-                    }
-                }
-            }
-        }
+        // Navigation button logic (if needed)
+        Button toTables = findViewById(R.id.tables);
+        toTables.setOnClickListener(v -> {
+            Intent intent = new Intent(TestResultSc.this, MedTablesSc.class);
+            startActivity(intent);
+        });
     }
+
 }
+

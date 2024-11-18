@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -17,78 +18,51 @@
         android:textSize="24sp"
         android:textColor="#5B3A29"
         android:textStyle="bold"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="center"
         android:layout_marginBottom="20dp" />
 
-    <!-- Rename Button -->
-    <Button
-        android:id="@+id/rename1"
+    <!-- Subtitle -->
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="تسمية"
+        android:textSize="20sp"
+        android:textColor="#005EB8"
         android:layout_gravity="end"
-        android:layout_marginEnd="16dp"
         android:layout_marginBottom="20dp" />
 
-    <!-- Results Container -->
-    <LinearLayout
-        android:id="@+id/results_container"
+    <!-- Scrollable Results Section -->
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="vertical">
+        android:padding="16dp">
 
-        <!-- Test Entry -->
         <LinearLayout
+            android:id="@+id/dynamicContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:background="@android:color/white"
-            android:layout_marginBottom="12dp"
-            android:gravity="start">
-
-            <FrameLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <!-- Test Name TextView -->
-                <TextView
-                    android:id="@+id/test_name_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="الكلكستروز"
-                    android:textSize="18sp"
-                    android:textColor="#000000"
-                    android:visibility="visible" />
-
-                <!-- Editable Test Name -->
-                <EditText
-                    android:id="@+id/test_name_edit"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="الكلكستروز"
-                    android:textSize="18sp"
-                    android:textColor="#000000"
-                    android:visibility="gone" />
-            </FrameLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="5.2ml/mol"
-                android:textSize="18sp"
-                android:textColor="#000000"
-                android:layout_marginStart="8dp" />
+            android:orientation="vertical">
         </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 
-    <!-- Navigation Button -->
+    <!-- Button to Navigate to Medical Tables -->
     <Button
         android:id="@+id/tables"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="to med tables"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp" />
+        android:layout_marginBottom="16dp" />
+
+    <!-- Contact Button -->
+    <Button
+        android:id="@+id/contactButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="الاتصال ب 937"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#005EB8" />
+
 </LinearLayout>
+
