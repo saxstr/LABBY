@@ -3,25 +3,18 @@ package com.example.gp_test;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class TestResultSc extends AppCompatActivity {
-    private Button toTables;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.testresult_sc);
 
         // Get the OCR results from the Intent
@@ -30,50 +23,19 @@ public class TestResultSc extends AppCompatActivity {
         // Find the parent container for dynamic blocks
         LinearLayout dynamicContainer = findViewById(R.id.dynamicContainer);
 
-        // Check if recognizedText is null or empty
+        // If recognizedText is null or empty, display a message
         if (recognizedText == null || recognizedText.isEmpty()) {
-            TextView noResultsView = new TextView(this);
-            noResultsView.setText("No text recognized.");
-            noResultsView.setPadding(16, 16, 16, 16);
-            noResultsView.setTextSize(18);
-            noResultsView.setTextColor(getResources().getColor(android.R.color.holo_red_dark));
-            dynamicContainer.addView(noResultsView);
+            addMessageBlock(dynamicContainer, "No text recognized.", android.R.color.holo_red_dark);
             return;
         }
 
-        // Split the recognized text into lines
+        // Process and display each line of the recognized text
         String[] lines = recognizedText.split("\n");
-
-        // Dynamically create a block for each line
         for (String line : lines) {
-            // Create a new LinearLayout for the block
-            LinearLayout blockLayout = new LinearLayout(this);
-            blockLayout.setOrientation(LinearLayout.HORIZONTAL);
-
-            // Set layout parameters for spacing
-            LinearLayout.LayoutParams blockParams = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-            );
-            blockParams.setMargins(8, 8, 8, 8); // Add spacing between blocks
-            blockLayout.setLayoutParams(blockParams);
-
-            // Create a TextView for the line
-            TextView textView = new TextView(this);
-            textView.setText(line);
-            textView.setPadding(16, 16, 16, 16);
-            textView.setTextSize(16);
-            textView.setBackgroundColor(getResources().getColor(android.R.color.white));
-            textView.setTextColor(getResources().getColor(android.R.color.black));
-
-            // Add the TextView to the block layout
-            blockLayout.addView(textView);
-
-            // Add the block layout to the parent container
-            dynamicContainer.addView(blockLayout);
+            addMessageBlock(dynamicContainer, line, android.R.color.black);
         }
 
-        // Navigation button logic (if needed)
+        // Set up navigation to tables (if button is needed)
         Button toTables = findViewById(R.id.tables);
         toTables.setOnClickListener(v -> {
             Intent intent = new Intent(TestResultSc.this, MedTablesSc.class);
@@ -81,5 +43,31 @@ public class TestResultSc extends AppCompatActivity {
         });
     }
 
-}
+    /**
+     * Adds a block of text to the dynamic container.
+     *
+     * @param container The parent container for text blocks.
+     * @param text      The text to display.
+     * @param textColor The color resource for the text.
+     */
+    private void addMessageBlock(LinearLayout container, String text, int textColor) {
+        // Create a new TextView
+        TextView textView = new TextView(this);
+        textView.setText(text);
+        textView.setPadding(16, 16, 16, 16);
+        textView.setTextSize(16);
+        textView.setBackgroundColor(getResources().getColor(android.R.color.white));
+        textView.setTextColor(getResources().getColor(textColor));
 
+        // Add layout parameters with spacing
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        layoutParams.setMargins(8, 8, 8, 8); // Add spacing between blocks
+        textView.setLayoutParams(layoutParams);
+
+        // Add the TextView to the container
+        container.addView(textView);
+    }
+}
