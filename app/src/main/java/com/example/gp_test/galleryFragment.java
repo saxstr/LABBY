@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -33,6 +34,10 @@ import com.yalantis.ucrop.UCrop;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.TreeMap;
 
 /** @noinspection deprecation*/
 public class galleryFragment extends Fragment {
@@ -143,18 +148,12 @@ public class galleryFragment extends Fragment {
 
         recognizer.process(image)
                 .addOnSuccessListener(result -> {
-                    StringBuilder recognizedText = new StringBuilder();
-                    for (Text.TextBlock block : result.getTextBlocks()) {
-                        recognizedText.append(block.getText()).append("\n");
-                    }
-
-                    // Pass recognized text to TestResultSc activity
-                    Intent intent = new Intent(requireContext(), TestResultSc.class);
-                    intent.putExtra("recognizedText", recognizedText.toString());
-                    startActivity(intent);
+                    handleOCRResults(result); // Group lines instead of words
                 })
                 .addOnFailureListener(e -> Toast.makeText(requireContext(), "OCR Error: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
+
+
 
     private void logImageInfo(Uri imageUri, String label) {
         try {
@@ -169,4 +168,61 @@ public class galleryFragment extends Fragment {
             Log.e("ImageInfo", "Error retrieving image info: " + e.getMessage());
         }
     }
+    private void handleOCRResults(Text result) {
+        List<String> groupedLines = new ArrayList<>();
+        List<Text.Element> elements = new ArrayList<>();
+
+        // Collect all words (elements) from blocks and lines
+        for (Text.TextBlock block : result.getTextBlocks()) {
+            for (Text.Line line : block.getLines()) {
+                elements.addAll(line.getElements());
+            }
+        }
+
+        // Group words into rows based on their vertical positions
+        while (!elements.isEmpty()) {
+            Text.Element firstElement = elements.remove(0);
+            StringBuilder currentRow = new StringBuilder(firstElement.getText());
+            Rect firstBoundingBox = firstElement.getBoundingBox();
+
+            if (firstBoundingBox != null) {
+                // Find words in the same row
+                Iterator<Text.Element> iterator = elements.iterator();
+                while (iterator.hasNext()) {
+                    Text.Element element = iterator.next();
+                    Rect boundingBox = element.getBoundingBox();
+
+                    if (boundingBox != null && isSameRow(firstBoundingBox, boundingBox)) {
+                        currentRow.append(" ").append(element.getText());
+                        iterator.remove();
+                    }
+                }
+            }
+
+            // Add the completed row to the grouped lines
+            groupedLines.add(currentRow.toString());
+        }
+
+        // Debug log to verify grouping
+        for (String line : groupedLines) {
+            Log.d("OCRResult", "Grouped Line: " + line);
+        }
+
+        // Pass grouped lines to TestResultSc
+        Intent intent = new Intent(requireContext(), TestResultSc.class);
+        intent.putStringArrayListExtra("recognizedLines", new ArrayList<>(groupedLines));
+        startActivity(intent);
+    }
+
+    // Helper method to check if two elements are in the same row
+    private boolean isSameRow(Rect box1, Rect box2) {
+        int rowThreshold = 30; // Adjust this threshold if needed
+        return Math.abs(box1.top - box2.top) < rowThreshold;
+    }
+
+
+
+
+
+
 }
