@@ -51,4 +51,10 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
     implementation ("com.google.mlkit:text-recognition:16.0.0")
     implementation ("com.google.mlkit:translate:16.0.0")
+    implementation ("androidx.appcompat:appcompat:1.6.1")
+    implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation ("com.google.android.material:material:1.9.0")
+    implementation ("com.google.android.gms:play-services-mlkit-text-recognition:18.0.2")
+    implementation ("com.google.firebase:firebase-database:20.2.3")
+    implementation (libs.ucrop)
 }
