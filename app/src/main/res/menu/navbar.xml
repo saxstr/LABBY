@@ -19,5 +19,5 @@
     <item
         android:id="@+id/navGallery"
         android:icon="@drawable/image"
-        android:title="g" />
+        android:title="gallery" />
 </menu>

@@ -87,11 +87,11 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/instructionTextView"
-        app:layout_constraintVertical_bias="0.087" />
+        app:layout_constraintVertical_bias="0.317" />
 
     <Button
         android:id="@+id/openCameraButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#60C3FF"
         android:text="فتح الكاميرا"
@@ -99,21 +99,40 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.21"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.718"
+
+        app:layout_constraintVertical_bias="0.764"
         tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/openGalleryButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="56dp"
+        android:backgroundTint="@color/lightBlue"
+        android:text="open gallery"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.764"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.764"
+        tools:ignore="UnknownId,UnknownIdInLayout" />
 
     <ImageView
         android:id="@+id/capturedImageView"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="403dp"
+        android:layout_height="301dp"
         android:contentDescription="Captured image"
+        android:src="@drawable/tutorial"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.627"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.478" />
 
     <TextView
         android:id="@+id/resultTextView"
@@ -126,19 +145,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.976"
         tools:layout_editor_absoluteX="16dp" />
-
-    <Button
-        android:id="@+id/tostats"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="to result stats"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.443"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.065" />
 
 
 
@@ -164,6 +170,7 @@
             app:menu="@menu/navbar" />
 
     </RelativeLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

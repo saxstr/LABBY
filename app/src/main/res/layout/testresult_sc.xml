@@ -9,7 +9,15 @@
     android:padding="16dp"
     android:background="#F8F1E7"
     tools:context=".TestResultSc">
-
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_margin="16dp"
+        android:layout_gravity="center" />
     <!-- Title -->
     <TextView
         android:layout_width="wrap_content"
@@ -22,16 +30,22 @@
         android:layout_marginBottom="20dp" />
 
     <!-- Subtitle -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="تسمية"
-        android:textSize="20sp"
-        android:textColor="#005EB8"
-        android:layout_gravity="end"
-        android:layout_marginBottom="20dp" />
+
 
     <!-- Scrollable Results Section -->
+    <TextView
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginBottom="20dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="8dp"
+        android:text="تسمية و حفظ"
+        android:textColor="#005EB8"
+        android:textSize="20sp" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -48,12 +62,13 @@
     </ScrollView>
 
     <!-- Button to Navigate to Medical Tables -->
+
     <Button
-        android:id="@+id/tables"
+        android:id="@+id/toSavedResultsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="to med tables"
-        android:layout_marginBottom="16dp" />
+        android:text="عرض النتائج المحفوظة"
+        android:layout_gravity="center_horizontal" />
 
     <!-- Contact Button -->
     <Button
@@ -64,6 +79,7 @@
         android:text="الاتصال ب 937"
         android:textColor="#FFFFFF"
         android:backgroundTint="#005EB8" />
+
 
 </LinearLayout>
 
