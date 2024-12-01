@@ -68,26 +68,25 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#E0E0E0"
-        android:padding="12dp"
-        android:layout_gravity="bottom">
+        android:layout_gravity="bottom"
+        android:padding="12dp">
 
         <Button
             android:id="@+id/add_table_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="@color/navy"
             android:text="تسجيل قائمة جديدة"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="@color/navy" />
+            android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/rename_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="@color/navy"
             android:text="تسمية"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="@color/navy" />
+            android:textColor="#FFFFFF" />
     </LinearLayout>
 </LinearLayout>

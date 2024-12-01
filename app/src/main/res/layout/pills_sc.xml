@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><LinearLayout
-
-
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -9,10 +8,7 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:background="#F8F1E7"
-    tools:context=".pillsSc"> <!-- Background color -->
-
-    <!-- App Icon -->
-
+    tools:context=".pillsSc">
 
     <!-- Title -->
     <TextView
@@ -23,147 +19,15 @@
         android:textColor="#5B3A29"
         android:textStyle="bold"
         android:layout_gravity="center"
-        android:layout_marginBottom="24dp"/>
+        android:layout_marginBottom="24dp" />
 
-    <!-- Medication Entries -->
+    <!-- Dynamic Medication Entries Container -->
     <LinearLayout
+        android:id="@+id/medication_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical">
-        <Button
-            android:id="@+id/savedresult"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="savedresu;t"
-
-            />
-
-        <!-- First Medication Entry -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:background="@android:color/white"
-            android:layout_marginBottom="12dp"
-            android:gravity="start">
-
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:paddingStart="8dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="دواء فيتامين د"
-                    android:textColor="#005EB8"
-                    android:textSize="18sp"
-                    android:textStyle="bold"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="3 جرعات - 7:00 مساءً"
-                    android:textColor="#000000"
-                    android:textSize="14sp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="السبت-الأثنين-الأربعاء"
-                    android:textColor="#000000"
-                    android:textSize="14sp"/>
-            </LinearLayout>
-        </LinearLayout>
-
-        <!-- Second Medication Entry -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:background="@android:color/white"
-            android:layout_marginBottom="12dp"
-            android:gravity="start">
-
-
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:paddingStart="8dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="دواء فيتامين ب"
-                    android:textColor="#005EB8"
-                    android:textSize="18sp"
-                    android:textStyle="bold"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="3 جرعات - 5:30 فجرًا"
-                    android:textColor="#000000"
-                    android:textSize="14sp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="الأحد-الثلاثاء-الخميس"
-                    android:textColor="#000000"
-                    android:textSize="14sp"/>
-            </LinearLayout>
-        </LinearLayout>
-
-        <!-- Third Medication Entry -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:background="@android:color/white"
-            android:layout_marginBottom="12dp"
-            android:gravity="start">
-
-
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:paddingStart="8dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="دواء الفوكسيليتور"
-                    android:textColor="#005EB8"
-                    android:textSize="18sp"
-                    android:textStyle="bold"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="3 جرعات - 3:30 عصرًا"
-                    android:textColor="#000000"
-                    android:textSize="14sp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="الأحد-الثلاثاء-الخميس"
-                    android:textColor="#000000"
-                    android:textSize="14sp"/>
-            </LinearLayout>
-        </LinearLayout>
-
     </LinearLayout>
 
     <!-- Bottom Navigation Bar -->
@@ -180,13 +44,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="تسجيل دواء جديد"
-
             android:textColor="#FFFFFF"
             android:backgroundTint="@color/navy"
-            android:layout_marginEnd="8dp"/>
-
-        <!-- Add other icons/buttons for navigation here -->
-
+            android:layout_marginEnd="8dp" />
     </LinearLayout>
 
 </LinearLayout>
+
