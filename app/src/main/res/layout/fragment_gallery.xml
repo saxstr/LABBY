@@ -7,15 +7,11 @@
     tools:context=".galleryFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
 
     <Button
         android:id="@+id/openCameraButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#60C3FF"
         android:text="فتح الكاميرا"
@@ -23,11 +19,27 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.275"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.718"
+
+        app:layout_constraintVertical_bias="0.737"
         tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/openGalleryButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="72dp"
+        android:backgroundTint="@color/lightBlue"
+        android:text="open gallery"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.764"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.737"
+        tools:ignore="UnknownId" />
 
     <ImageView
         android:id="@+id/capturedImageView"
@@ -51,18 +63,7 @@
         app:layout_constraintVertical_bias="0.976"
         tools:layout_editor_absoluteX="16dp" />
 
-    <Button
-        android:id="@+id/tostats"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="to result stats"
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.443"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.065" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
