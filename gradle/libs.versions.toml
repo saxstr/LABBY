@@ -1,5 +1,5 @@
 [versions]
-agp = "8.7.1"
+agp = "8.7.2"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
@@ -11,7 +11,9 @@ firebaseAuth = "23.1.0"
 meowBottomNavigation = "1.3.1"
 navigationFragment = "2.8.3"
 navigationUi = "2.8.3"
+firebaseDatabase = "21.0.0"
 ucrop = "2.2.8"
+
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -25,7 +27,9 @@ firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version
 meow-bottom-navigation = { module = "com.etebarian:meow-bottom-navigation", version.ref = "meowBottomNavigation" }
 navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigationFragment" }
 navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version.ref = "navigationUi" }
+firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
 ucrop = { module = "com.github.yalantis:ucrop", version.ref = "ucrop" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

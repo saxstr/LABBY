@@ -1,14 +1,107 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#F8F1E7"
+    android:id="@+id/main"
     tools:context=".reminderFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <!-- Title -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="قوائم الادوية"
+        android:textSize="24sp"
+        android:textColor="#5B3A29"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_marginBottom="24dp"
+        android:contentDescription="قوائم الادوية" />
 
-</FrameLayout>
+    <!-- Scrollable Medication Entries -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:contentDescription="Scrollable container for medication lists">
+
+        <LinearLayout
+            android:id="@+id/medication_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <!-- Add Medication Form -->
+    <LinearLayout
+        android:id="@+id/add_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:paddingTop="16dp">
+
+        <EditText
+            android:id="@+id/new_medication_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="اسم القائمة"
+            android:padding="8dp"
+            android:background="@android:color/white"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:contentDescription="ادخل اسم القائمة" />
+
+        <Button
+            android:id="@+id/add_confirm_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="إضافة"
+            android:layout_marginStart="8dp"
+            android:contentDescription="اضافة القائمة" />
+    </LinearLayout>
+
+    <!-- Spacer to Avoid Navbar Overlap -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="16dp"
+        android:background="@android:color/transparent" />
+
+    <!-- Bottom Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/add_table_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/navy"
+            android:text="تسجيل قائمة جديدة"
+            android:textColor="#FFFFFF"
+            android:contentDescription="زر تسجيل قائمة جديدة" />
+
+        <Button
+            android:id="@+id/rename_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/navy"
+            android:text="تسمية"
+            android:textColor="#FFFFFF"
+            android:contentDescription="زر تسمية القائمة" />
+    </LinearLayout>
+
+    <!-- Spacer to Separate Buttons from Navbar -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@android:color/transparent" />
+</LinearLayout>
