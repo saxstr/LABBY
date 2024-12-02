@@ -11,15 +11,7 @@
 
 
     <!-- Title -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="أدويتي"
-        android:textSize="24sp"
-        android:textColor="#005EB8"
-        android:textStyle="bold"
-        android:layout_gravity="start"
-        android:layout_marginBottom="10dp"/>
+
 
     <!-- Subtitle -->
     <TextView

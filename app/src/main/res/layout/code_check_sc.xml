@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,47 +8,66 @@
     android:padding="16dp"
     android:background="#F8F1E7"
     android:id="@+id/main"
-    tools:context=".CodeCheckSc">
+    tools:context=".CodeCheckSc"
+    tools:ignore="MissingConstraints">
 
     <!-- Title -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="تطمئن على أحبابك"
-        android:textSize="24sp"
-        android:textColor="#5B3A29"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:layout_marginBottom="20dp"/>
 
     <!-- Instructions -->
+
+    <!-- Spacer to push the EditText to the middle of the screen -->
+
+    <!-- Input Field -->
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corners"
+        android:backgroundTint="@color/white"
+        android:hint="مثال: 12345#"
+        android:padding="13dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.562"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <ImageView
+        android:layout_width="212dp"
+        android:layout_height="309dp"
+        android:src="@drawable/applogo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ادخل الرقم المكون من 6 خانات لاستيراد قوائم الأدوية:"
-        android:textSize="16sp"
-        android:textColor="#000000"
         android:layout_gravity="center"
-        android:layout_marginBottom="20dp"/>
+        android:text="ادخل الرقم المكون من 6 خانات لاستيراد قوائم الأدوية:"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.48" />
 
-    <!-- Spacer to push the EditText to the middle of the screen -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
-
-    <!-- Input Field -->
-    <EditText
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="مثال: 12345#"
-        android:padding="13dp"
-        android:layout_marginBottom="20dp"/>
+        android:layout_gravity="center"
+        android:text="تطمئن على أحبابك"
+        android:textColor="#5B3A29"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.383" />
 
-    <!-- Spacer to ensure proper layout alignment -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

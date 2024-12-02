@@ -46,6 +46,13 @@
         android:textColor="#005EB8"
         android:textSize="20sp" />
 
+    <Button
+        android:id="@+id/toSavedResultsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="عرض النتائج المحفوظة" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -63,12 +70,7 @@
 
     <!-- Button to Navigate to Medical Tables -->
 
-    <Button
-        android:id="@+id/toSavedResultsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="عرض النتائج المحفوظة"
-        android:layout_gravity="center_horizontal" />
+
 
     <!-- Contact Button -->
     <Button

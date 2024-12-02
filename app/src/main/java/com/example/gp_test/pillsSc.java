@@ -1,7 +1,9 @@
 package com.example.gp_test;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -14,16 +16,24 @@ import java.util.List;
 
 /** @noinspection deprecation */
 public class pillsSc extends AppCompatActivity {
-
+        private Button too;
     private LinearLayout medicationContainer;
     private String tableReference;
     private static final HashMap<String, List<AddMedTables.Medication>> pillsData = new HashMap<>(); // Temporary storage for pills mapped by tableReference
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pills_sc);
-
+        too = findViewById(R.id.too);
+        too.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(pillsSc.this, CodeCheckSc.class);
+                startActivity(i);
+            }
+        });
         // Retrieve the table reference from the Intent
         Intent intent = getIntent();
         tableReference = intent.getStringExtra("table_reference"); // Get the unique reference of the table
