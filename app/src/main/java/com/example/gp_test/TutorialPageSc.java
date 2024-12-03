@@ -40,7 +40,7 @@ public class TutorialPageSc extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
 // Set default fragment
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new homeFragmment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new galleryFragment()).commit();
 
 // Set up listener for navigation item selection
         bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -56,9 +56,7 @@ public class TutorialPageSc extends AppCompatActivity {
                 case R.id.navReminder:
                     selectedFragment = new reminderFragment();
                     break;
-                case R.id.navHome:
-                    selectedFragment = new homeFragmment();
-                    break;
+
             }
 
             // Replace the current fragment with the selected fragment

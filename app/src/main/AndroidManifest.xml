@@ -51,12 +51,7 @@
             android:name=".CodeCheckSc"
             android:exported="false" />
 
-        <activity
-            android:name=".CamSc"
-            android:exported="false" />
-        <activity
-            android:name=".LogInSc"
-            android:exported="false" />
+
         <activity
             android:name=".RegSc"
             android:exported="false" />
@@ -70,7 +65,7 @@
             android:name=".TutorialPageSc"
             android:exported="false" />
         <activity
-            android:name=".SplashSc"
+            android:name=".LogInSc"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
