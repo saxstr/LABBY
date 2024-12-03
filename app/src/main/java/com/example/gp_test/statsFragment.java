@@ -27,7 +27,7 @@ public class statsFragment extends Fragment {
     private SavedResultsAdapter adapter;
 
     @Nullable
-    @Override
+        @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.display_lists_sc, container, false);

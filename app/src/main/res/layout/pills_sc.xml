@@ -1,14 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="#F8F1E7"
-    tools:context=".pillsSc">
+    android:background="#F8F1E7">
 
     <!-- Title -->
     <TextView
@@ -21,28 +17,23 @@
         android:layout_gravity="center"
         android:layout_marginBottom="24dp" />
 
-    <!-- Dynamic Medication Entries Container -->
-    <LinearLayout
-        android:id="@+id/medication_container"
+    <!-- RecyclerView for Pills -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewPills"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="vertical">
-    </LinearLayout>
+        android:clipToPadding="false"
+        android:scrollbars="vertical" />
 
     <!-- Bottom Navigation Bar -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#E0E0E0"
         android:padding="12dp"
-        android:layout_gravity="bottom">
-<Button
-    android:id="@+id/too"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-    />
+        <!-- Add Medication Button -->
         <Button
             android:id="@+id/addmed"
             android:layout_width="0dp"
@@ -53,6 +44,4 @@
             android:backgroundTint="@color/navy"
             android:layout_marginEnd="8dp" />
     </LinearLayout>
-
 </LinearLayout>
-

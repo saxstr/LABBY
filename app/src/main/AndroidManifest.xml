@@ -14,7 +14,8 @@
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.CALL_PHONE"
+        tools:ignore="PermissionImpliesUnsupportedChromeOsHardware" />
 
     <application
         android:allowBackup="true"
@@ -30,18 +31,15 @@
         <activity
             android:name=".DisplayListsSc"
             android:exported="false" />
-        <activity
-            android:name=".ListSavedResultSc"
-            android:exported="false" />
+
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:screenOrientation="fullSensor"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            tools:ignore="DiscouragedApi" />
+
         <activity
-            android:name=".CropActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AddMedTables"
+            android:name=".AddPillSc"
             android:exported="false" />
         <activity
             android:name=".SavedResultSc"
@@ -52,9 +50,7 @@
         <activity
             android:name=".CodeCheckSc"
             android:exported="false" />
-        <activity
-            android:name=".AnalysisSc"
-            android:exported="false" />
+
         <activity
             android:name=".CamSc"
             android:exported="false" />

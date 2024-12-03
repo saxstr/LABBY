@@ -2,7 +2,6 @@ package com.example.gp_test;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -11,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddMedTables extends AppCompatActivity {
+public class AddPillSc extends AppCompatActivity {
 
     private EditText medicationName;
     private EditText dosage;
@@ -23,7 +22,7 @@ public class AddMedTables extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_med_tables);
+        setContentView(R.layout.add_pill_sc);
 
         // Retrieve the table reference
         String tableReference = getIntent().getStringExtra("table_reference");
@@ -42,7 +41,7 @@ public class AddMedTables extends AppCompatActivity {
 
             // Validate input
             if (name.isEmpty() || dosageValue.isEmpty() || timeValue.isEmpty()) {
-                Toast.makeText(AddMedTables.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddPillSc.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
             } else {
                 // Create pill data
                 String pillData = "اسم: " + name + "\nجرعة: " + dosageValue + "\nوقت: " + timeValue;

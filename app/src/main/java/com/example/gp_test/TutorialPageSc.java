@@ -56,7 +56,7 @@ public class TutorialPageSc extends AppCompatActivity {
                 case R.id.navReminder:
                     selectedFragment = new reminderFragment();
                     break;
-                case R.id.navHome: // Fixed missing "R.id"
+                case R.id.navHome:
                     selectedFragment = new homeFragmment();
                     break;
             }
