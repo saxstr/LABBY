@@ -20,20 +20,16 @@
         android:layout_marginBottom="24dp"
         android:contentDescription="قوائم الادوية" />
 
-    <!-- Scrollable Medication Entries -->
-    <ScrollView
+    <!-- RecyclerView for Medication Entries -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewMedTables"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:fillViewport="true"
-        android:contentDescription="Scrollable container for medication lists">
-
-        <LinearLayout
-            android:id="@+id/medication_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
+        android:clipToPadding="false"
+        android:scrollbars="vertical"
+        android:contentDescription="RecyclerView for medication lists"
+        tools:listitem="@layout/item_med_table" />
 
     <!-- Add Medication Form -->
     <LinearLayout
@@ -65,12 +61,6 @@
             android:contentDescription="اضافة القائمة" />
     </LinearLayout>
 
-    <!-- Spacer to Avoid Navbar Overlap -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="16dp"
-        android:background="@android:color/transparent" />
-
     <!-- Bottom Buttons -->
     <LinearLayout
         android:layout_width="match_parent"
@@ -99,9 +89,4 @@
             android:contentDescription="زر تسمية القائمة" />
     </LinearLayout>
 
-    <!-- Spacer to Separate Buttons from Navbar -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@android:color/transparent" />
 </LinearLayout>

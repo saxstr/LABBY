@@ -50,8 +50,8 @@ public class SavedResultsAdapter extends RecyclerView.Adapter<SavedResultsAdapte
         // Sharing functionality for "مشاركة" button
         holder.shareButton.setOnClickListener(v -> {
             String shareText = "Result Name: " + result.get("name") +
-                    "\nCode: " + result.get("code") +
-                    "\nOCR Data: " + result.get("ocrData");
+                    "\nCode: " + result.get("code");
+
 
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("text/plain");

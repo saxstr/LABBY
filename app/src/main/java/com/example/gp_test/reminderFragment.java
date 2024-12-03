@@ -40,7 +40,7 @@ public class reminderFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_reminder, container, false);
 
         // Initialize views
-        medicationContainer = view.findViewById(R.id.medication_container);
+        medicationContainer = view.findViewById(R.id.recyclerViewMedTables);
         addForm = view.findViewById(R.id.add_form);
         newMedicationName = view.findViewById(R.id.new_medication_name);
         addTableButton = view.findViewById(R.id.add_table_button);
