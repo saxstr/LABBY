@@ -1,10 +1,8 @@
 package com.example.gp_test;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,10 +12,10 @@ import java.util.List;
 
 public class PillAdapter extends RecyclerView.Adapter<PillAdapter.PillViewHolder> {
 
-    private final List<AddPillSc.Medication> pills;
-    private final OnPillDeleteListener deleteListener;
+    private final List<Pill> pills;
+    private final OnDeleteClickListener deleteListener;
 
-    public PillAdapter(List<AddPillSc.Medication> pills, OnPillDeleteListener deleteListener) {
+    public PillAdapter(List<Pill> pills, OnDeleteClickListener deleteListener) {
         this.pills = pills;
         this.deleteListener = deleteListener;
     }
@@ -31,12 +29,19 @@ public class PillAdapter extends RecyclerView.Adapter<PillAdapter.PillViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull PillViewHolder holder, int position) {
-        AddPillSc.Medication pill = pills.get(position);
+        Pill pill = pills.get(position);
+
+        // Bind pill data to the views
         holder.pillName.setText("اسم: " + pill.name);
         holder.pillDosage.setText("جرعة: " + pill.dosage);
         holder.pillTime.setText("وقت: " + pill.time);
 
-        holder.deleteButton.setOnClickListener(v -> deleteListener.onDelete(position));
+        // Handle delete button click
+        holder.deleteButton.setOnClickListener(v -> {
+            if (deleteListener != null) {
+                deleteListener.onDelete(position);
+            }
+        });
     }
 
     @Override
@@ -44,13 +49,12 @@ public class PillAdapter extends RecyclerView.Adapter<PillAdapter.PillViewHolder
         return pills.size();
     }
 
-    public interface OnPillDeleteListener {
+    public interface OnDeleteClickListener {
         void onDelete(int position);
     }
 
-    static class PillViewHolder extends RecyclerView.ViewHolder {
-        TextView pillName, pillDosage, pillTime;
-        Button deleteButton;
+    public static class PillViewHolder extends RecyclerView.ViewHolder {
+        TextView pillName, pillDosage, pillTime, deleteButton;
 
         public PillViewHolder(@NonNull View itemView) {
             super(itemView);

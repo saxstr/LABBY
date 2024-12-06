@@ -12,10 +12,7 @@
         android:icon="@drawable/schedule"
     android:title="Calendar" />
 
-    <item
-        android:id="@+id/navHome"
-        android:icon="@drawable/homeicon"
-    android:title="Home" />
+
     <item
         android:id="@+id/navGallery"
         android:icon="@drawable/image"

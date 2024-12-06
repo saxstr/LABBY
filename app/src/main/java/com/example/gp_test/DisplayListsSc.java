@@ -64,7 +64,6 @@ public class DisplayListsSc extends AppCompatActivity implements SavedResultsAda
     }
 
 
-    @Override
     public void onItemClick(String selectedKey) {
         // Retrieve the specific item from Firebase
         firebaseDatabase.child(selectedKey).addListenerForSingleValueEvent(new ValueEventListener() {

@@ -1,52 +1,58 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="#FAF5E4">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="إضافة دواء جديد"
-        android:textSize="24sp"
-        android:textColor="#6A1B9A"
-        android:gravity="center"
-        android:layout_gravity="center_horizontal"
-        android:paddingBottom="16dp"/>
-
+>
+    <!-- Medication Name -->
     <EditText
         android:id="@+id/medication_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="اسم الدواء"
-        android:padding="12dp"
-        android:inputType="textPersonName"/>
+        android:padding="8dp"
+        android:background="@android:color/white"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:layout_marginBottom="16dp" />
 
+    <!-- Dosage -->
     <EditText
         android:id="@+id/dosage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="الجرعة"
-        android:padding="12dp"
-        android:inputType="number"/>
+        android:padding="8dp"
+        android:background="@android:color/white"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:layout_marginBottom="16dp" />
 
-    <EditText
+    <!-- Time -->
+    <TextView
         android:id="@+id/time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="الوقت"
-        android:padding="12dp"
-        android:inputType="time"/>
+        android:hint="اختر الوقت"
+        android:padding="8dp"
+        android:background="@android:color/white"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:layout_marginBottom="16dp"
+        android:drawableEnd="@android:drawable/ic_menu_my_calendar"
+        android:gravity="center_vertical"
+        android:clickable="true"
+        android:focusable="true" />
 
+    <!-- Save Button -->
     <Button
         android:id="@+id/save_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="حفظ الدواء"
-        android:backgroundTint="#6A1B9A"
-        android:textColor="#FFFFFF"
+        android:text="حفظ"
+        android:backgroundTint="@color/navy"
+        android:textColor="@android:color/white"
         android:padding="12dp"
-        android:layout_marginTop="16dp"/>
+        android:textSize="16sp" />
 </LinearLayout>

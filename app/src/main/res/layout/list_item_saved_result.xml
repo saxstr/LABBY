@@ -4,7 +4,9 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="@drawable/card_background">
+    android:background="@drawable/card_background"
+
+    >
 
     <!-- Title -->
     <TextView
@@ -48,4 +50,19 @@
         android:textStyle="bold"
         android:padding="4dp"
         android:background="@drawable/share_button_background" />
+
+    <!-- Delete Button -->
+    <TextView
+        android:id="@+id/deleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="حذف"
+        android:textSize="14sp"
+        android:textColor="#FF0000"
+        android:textStyle="bold"
+        android:padding="4dp"
+        android:background="@drawable/delete_button_background"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        android:focusable="true" />
 </LinearLayout>

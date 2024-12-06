@@ -1,4 +1,5 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,16 +21,20 @@
         android:layout_marginBottom="24dp"
         android:contentDescription="قوائم الادوية" />
 
-    <!-- RecyclerView for Medication Entries -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewMedTables"
+    <!-- Scrollable Medication Entries -->
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:clipToPadding="false"
-        android:scrollbars="vertical"
-        android:contentDescription="RecyclerView for medication lists"
-        tools:listitem="@layout/item_med_table" />
+        android:fillViewport="true"
+        android:contentDescription="Scrollable container for medication lists">
+
+        <LinearLayout
+            android:id="@+id/recyclerViewMedTables"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
 
     <!-- Add Medication Form -->
     <LinearLayout
@@ -61,12 +66,18 @@
             android:contentDescription="اضافة القائمة" />
     </LinearLayout>
 
+    <!-- Larger Spacer for navigation bar -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="32dp" />
+
     <!-- Bottom Buttons -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginBottom="100dp"> <!-- Increased margin for more space -->
 
         <Button
             android:id="@+id/add_table_button"
@@ -88,5 +99,4 @@
             android:textColor="#FFFFFF"
             android:contentDescription="زر تسمية القائمة" />
     </LinearLayout>
-
 </LinearLayout>

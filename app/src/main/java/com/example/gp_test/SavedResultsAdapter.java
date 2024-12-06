@@ -2,13 +2,18 @@ package com.example.gp_test;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,14 +55,40 @@ public class SavedResultsAdapter extends RecyclerView.Adapter<SavedResultsAdapte
         // Sharing functionality for "مشاركة" button
         holder.shareButton.setOnClickListener(v -> {
             String shareText = "Result Name: " + result.get("name") +
-                    "\nCode: " + result.get("code");
-
+                    "\nCode: " + result.get("code") +
+                    "\nOCR Data: " + result.get("ocrData");
 
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
             shareIntent.putExtra(Intent.EXTRA_TEXT, shareText);
 
             context.startActivity(Intent.createChooser(shareIntent, "Share via"));
+        });
+
+        // Set click listener for the "حذف" button
+        holder.deleteButton.setOnClickListener(v -> {
+            String codeToDelete = result.get("code");
+            if (codeToDelete != null) {
+                // Reference to Firebase "NamedPages" node
+                DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("NamedPages");
+
+                // Attempt to delete the data using the unique code
+                databaseRef.child(codeToDelete).removeValue()
+                        .addOnSuccessListener(aVoid -> {
+                            // Remove from local list and update UI
+                            savedResults.remove(position);
+                            notifyItemRemoved(position);
+                            Toast.makeText(context, "تم حذف النتيجة من قاعدة البيانات", Toast.LENGTH_SHORT).show();
+                        })
+                        .addOnFailureListener(e -> {
+                            // Log any errors and show a toast message
+                            Log.e("FirebaseDelete", "Error deleting from Firebase", e);
+                            Toast.makeText(context, "فشل الحذف من قاعدة البيانات", Toast.LENGTH_SHORT).show();
+                        });
+            } else {
+                // Handle case where code is missing or null
+                Toast.makeText(context, "خطأ: لا يوجد كود للحذف", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
@@ -67,11 +98,10 @@ public class SavedResultsAdapter extends RecyclerView.Adapter<SavedResultsAdapte
     }
 
     public interface OnItemClickListener {
-        void onItemClick(String selectedKey);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView resultTitle, resultCode, resultDate, shareButton;
+        TextView resultTitle, resultCode, resultDate, shareButton, deleteButton;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -79,6 +109,7 @@ public class SavedResultsAdapter extends RecyclerView.Adapter<SavedResultsAdapte
             resultCode = itemView.findViewById(R.id.resultCode);
             resultDate = itemView.findViewById(R.id.resultDate);
             shareButton = itemView.findViewById(R.id.shareButton);
+            deleteButton = itemView.findViewById(R.id.deleteButton); // Assuming "حذف" is the delete button
         }
     }
 }
